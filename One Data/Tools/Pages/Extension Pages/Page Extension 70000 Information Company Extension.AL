@@ -36,7 +36,7 @@ pageextension 70000 CompanyInformationExtension extends "Company Information"
                 Caption = 'Documentos registrados';
                 trigger OnAction();
                 begin
-                    page.runmodal(50100);
+                    page.runmodal(70100);
                 end;
             }
             group("Tablas personalizadas")
@@ -47,43 +47,7 @@ pageextension 70000 CompanyInformationExtension extends "Company Information"
                     Caption = 'Configuración personalizaciones';
                     trigger OnAction();
                     begin
-                        page.runmodal(50139);
-                    end;
-                }
-                action(EntryLots)
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Movimientos de Lotes';
-                    trigger OnAction();
-                    begin
-                        page.runmodal(70003);
-                    end;
-                }
-                action(EntryPalletBoxWeights)
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Movimientos de pesos de cajas';
-                    trigger OnAction();
-                    begin
-                        page.runmodal(70000);
-                    end;
-                }
-                action(EntryPalletTasks)
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Movimientos de tareas pallets';
-                    trigger OnAction();
-                    begin
-                        page.runmodal(70001);
-                    end;
-                }
-                action(LinePesadas)
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Movimientos pesadas';
-                    trigger OnAction();
-                    begin
-                        page.runmodal(50144);
+                        page.runmodal(70139);
                     end;
                 }
             }
@@ -95,7 +59,7 @@ pageextension 70000 CompanyInformationExtension extends "Company Information"
                     Caption = 'Movimientos saldos iniciales clientes';
                     trigger OnAction();
                     begin
-                        page.runmodal(50103);
+                        page.runmodal(70103);
                     end;
                 }
                 action(VendorInitAmount)
@@ -104,7 +68,7 @@ pageextension 70000 CompanyInformationExtension extends "Company Information"
                     Caption = 'Movimientos saldos iniciales proveedores';
                     trigger OnAction();
                     begin
-                        page.runmodal(50104);
+                        page.runmodal(70104);
                     end;
                 }
                 action(MovsInitAmount)
@@ -113,7 +77,7 @@ pageextension 70000 CompanyInformationExtension extends "Company Information"
                     Caption = 'Movimientos contable';
                     trigger OnAction();
                     begin
-                        page.runmodal(50106);
+                        page.runmodal(70106);
                     end;
                 }
             }

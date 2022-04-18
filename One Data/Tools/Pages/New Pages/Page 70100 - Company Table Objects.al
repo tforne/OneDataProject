@@ -40,21 +40,23 @@ page 70100 "Company Table Objects"
                 }
                 field("Object Subtype"; Rec."Object Subtype")
                 {
+                    ApplicationArea = Basic, Suite;
                 }
                 field(NumberOfRecords; NumberOfRecords)
                 {
+                    ApplicationArea = Basic, Suite;
                     trigger OnDrillDown()
                     begin
                         case Rec."Object ID" of
                             17:
                                 begin
-                                    clear(PageGLEntry);
-                                    PageGLEntry.runmodal;
+                                    Page.run(70101, glentry);
                                 end;
 
                             337:
                                 begin
                                     clear(PageReservationEntry);
+
                                     PageReservationEntry.runmodal;
                                 end;
 
