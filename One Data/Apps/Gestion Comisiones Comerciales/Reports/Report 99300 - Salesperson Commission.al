@@ -4,7 +4,7 @@ report 99300 "Salesperson Commission"
     //version
 
     DefaultLayout = RDLC;
-    RDLCLayout = './RDLCLayout/Salesperson Commission.rdlc';
+    RDLCLayout = './One Data/Apps/Gestion Comisiones Comerciales/RDLCLayout/Salesperson Commission.rdl';
     ApplicationArea = Suite;
     Caption = 'Commission - Salesperson';
     EnableHyperlinks = true;
@@ -13,7 +13,7 @@ report 99300 "Salesperson Commission"
     {
         dataitem(Salesperson; 13)
         {
-            DataItemTableView = SORTING (Code);
+            DataItemTableView = SORTING(Code);
             PrintOnlyIfDetail = true;
             RequestFilterFields = "Code";
             column(STRSUBSTNO_Text000_PeriodText_; STRSUBSTNO(Text000, PeriodText))
@@ -122,9 +122,9 @@ report 99300 "Salesperson Commission"
             dataitem("Commission Entry"; 99300)
             {
                 //XPP Agregat cometes en Salesperson Code, Posting Date, Document Type ... .
-                DataItemLink = "Salesperson Code" = FIELD (Code);
-                DataItemTableView = SORTING ("Salesperson Code", "Posting Date")
-                                            WHERE ("Document Type" = FILTER (Invoice));
+                DataItemLink = "Salesperson Code" = FIELD(Code);
+                DataItemTableView = SORTING("Salesperson Code", "Posting Date")
+                                            WHERE("Document Type" = FILTER(Invoice));
 
                 RequestFilterFields = "Posting Date";
                 column(CommissionEntry_PostingDate; FORMAT("Posting Date"))

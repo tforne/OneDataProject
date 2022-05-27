@@ -1,4 +1,4 @@
-pageextension 70000 CompanyInformationExtension extends "Company Information"
+pageextension 70100 CompanyInformationExtension extends "Company Information"
 {
     actions
     {

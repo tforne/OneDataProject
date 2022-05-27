@@ -1,28 +1,11 @@
-report 99070 "Formato Factura 01"
+report 90071 "Formato Factura 02"
 {
-    // version NAVW17.00,NAVES7.00
+    // version DP,CAMPMANY
 
-    // <changelog>
-    //   <add id="ES0001" dev="VGARCA" date="2004-08-27" area="EQUIVCHRG"  request="ES-START-40"
-    //     releaseversion="ES4.00">Equivalence Charge</add>
-    //   <add id="ES0002" dev="VGARCA" date="2004-08-27" area="PAYDISC"  request="ES-START-40"
-    //     releaseversion="ES4.00">Payment Discount</add>
-    //   <add id="ES0003" dev="VGARCA" date="2004-08-27" area="VATECCALC"  request="ES-START-40"
-    //     releaseversion="ES4.00">VAT+EC % calculation</add>
-    //   <add id="ES0004" dev="VGARCA" date="2004-08-27" area="PAYTERMS"  request="ES-START-40"
-    //     releaseversion="ES4.00">Payment Terms &amp; Payment Methods</add>
-    //   <add id="ES0005" dev="VGARCA" date="2004-08-27" area="CARTERA"  request="ES-START-40"
-    //     releaseversion="ES4.00">Cartera Add-On (Spanish)</add>
-    //   <change id="ES0006" dev="VGARCA" date="2005-10-21" area="PAYTERMS" feature="ES-START-4.00.02"
-    //     baseversion="ES4.00.A" releaseversion="ES4.00.02">Payment Terms &amp; Payment Methods</change>
-    //   <change id="ES0007" dev="AUGMENTUM" date="2008-06-13" area="PAYTERMS" feature="PSCORS1140"
-    //     baseversion="ES4.00.02" releaseversion="ES6.00">Report transformation</change>
-    // </changelog>
     DefaultLayout = RDLC;
-    RDLCLayout = './Formato Factura 01.rdl';
-
-    CaptionML = ENU = 'Sales - Invoice format 01',
-                ESP = 'Ventas - Factura formato 01';
+    RDLCLayout = './One Data/Apps/Reports adicionales/Documentos/RDLCLayout/Formato Factura 02.rdl';
+    CaptionML = ENU = 'Sales - Invoice formmat 02',
+                ESP = 'Ventas - Factura format 02';
     Permissions = TableData 7190 = rimd;
     PreviewMode = PrintLayout;
 
@@ -32,7 +15,12 @@ report 99070 "Formato Factura 01"
         {
             DataItemTableView = SORTING("No.");
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
-            column(No_SalesInvoiceHeader; "No.")
+            RequestFilterHeadingML = ENU = 'Posted Sales Invoice',
+                                     ESP = 'Histórico facturas venta';
+            column(vIMPBRUTO; vIMPBRUTO)
+            {
+            }
+            column(No_SalesInvHdr; "No.")
             {
             }
             column(PaymentTermsDescription; PaymentTerms.Description)
@@ -56,95 +44,164 @@ report 99070 "Formato Factura 01"
             column(DocDateCaption; DocDateCaptionLbl)
             {
             }
-            column(HomePageCaption; HomePageCaptionLbl)
+            column(HomePageCaption; HomePageCaptionCap)
             {
             }
             column(EmailCaption; EmailCaptionLbl)
             {
             }
-            column(FaxNoCaption; FaxNoCaptionLbl)
+            column(RefProvSuNtraFra; RefProvSuNtraFra)
             {
             }
-            column(PagaderaCaption; PagaderaCaptionLbl)
+            column(EnvADir1; EnvADir[1])
             {
             }
-            column(VencimientoCaption; VencimientoCaptionLbl)
+            column(EnvADir2; EnvADir[2])
             {
             }
-            column(FinCaption; FinCaptionLbl)
+            column(EnvADir3; EnvADir[3])
             {
             }
-            column(CustBankName; g_recBcoClie.Name)
+            column(EnvADir4; EnvADir[4])
             {
             }
-            column(CustBankCCC; g_recBcoClie."CCC Bank No." + '-' + g_recBcoClie."CCC Bank Branch No." + '-' + g_recBcoClie."CCC Control Digits" + '-' + g_recBcoClie."CCC Bank Account No.")
+            column(EnvADir5; EnvADir[5])
             {
             }
-            column(FechaVto1; FechaVto[1])
+            column(DirClie1; DirClie[1])
             {
             }
-            column(FechaVto2; FechaVto[2])
+            column(DirClie2; DirClie[2])
             {
             }
-            column(FechaVto3; FechaVto[3])
+            column(DirClie3; DirClie[3])
             {
             }
-            column(FechaVto4; FechaVto[4])
+            column(DirClie4; DirClie[4])
             {
             }
-            column(ImporteVto1; ImporteVto[1])
+            column(DirClie5; DirClie[5])
             {
             }
-            column(ImporteVto2; ImporteVto[2])
+            column(DirClie6; DirClie[5])
             {
             }
-            column(ImporteVto3; ImporteVto[3])
+            column(FormaPagoDesc; FormaPago.Description)
             {
             }
-            column(ImporteVto4; ImporteVto[4])
+            column(aFechaVto1; aFechaVto[1])
             {
             }
-            column(termfinanc1; termfinanc[1])
+            column(aFechaVto2; aFechaVto[2])
             {
             }
-            column(termfinanc2; termfinanc[2])
+            column(aFechaVto3; aFechaVto[3])
             {
             }
-            column(termfinanc3; termfinanc[3])
+            column(CodDivisa2; CodDivisa2)
             {
             }
-            column(termfinanc4; termfinanc[4])
+            column(aImpVto1; aImpVto[1])
             {
             }
-            column(tottermini1; tottermini[1])
+            column(aImpVto2; aImpVto[2])
             {
             }
-            column(tottermini2; tottermini[2])
+            column(aImpVto3; aImpVto[3])
             {
             }
-            column(tottermini3; tottermini[3])
+            column(banco1; rgBcoCli.Name + ' ' + rgBcoCli."Name 2")
             {
             }
-            column(tottermini4; tottermini[4])
+            column(banco2; rgBcoCli.Address)
             {
             }
-            column(TotalCaptionCap; TotalCaptionLbl)
+            column(banco3; rgBcoCli."Post Code" + ' ' + rgBcoCli.City)
+            {
+            }
+            column(bancoCCC; rgBcoCli."CCC Bank No." + '.' + rgBcoCli."CCC Bank Branch No." + '.' + rgBcoCli."CCC Control Digits" + '.****')
+            {
+            }
+            column(aPagos; aPagos)
+            {
+            }
+            column(txOferta1; txOferta1)
+            {
+            }
+            column(txPreciosIVAinc; txPreciosIVAinc)
+            {
+            }
+            column(Duplicado; Duplicado)
+            {
+            }
+            column(ImprimirLogos; ImprimirLogos)
+            {
+            }
+            column(vDTOPP; vDTOPP)
+            {
+            }
+            column(vDTOFAC; vDTOFAC)
+            {
+            }
+            column(vBASEIMP1; vBASEIMP[1])
+            {
+            }
+            column(vBASEIMP2; vBASEIMP[2])
+            {
+            }
+            column(vBASEIMP3; vBASEIMP[3])
+            {
+            }
+            column(vPERCIVA1; vPERCIVA[1])
+            {
+            }
+            column(vPERCIVA2; vPERCIVA[2])
+            {
+            }
+            column(vPERCIVA3; vPERCIVA[3])
+            {
+            }
+            column(vIMPIVA1; vIMPIVA[1])
+            {
+            }
+            column(vIMPIVA2; vIMPIVA[2])
+            {
+            }
+            column(vIMPIVA3; vIMPIVA[3])
+            {
+            }
+            column(vPERRE1; vPERRE[1])
+            {
+            }
+            column(vPERRE2; vPERRE[2])
+            {
+            }
+            column(vPERRE3; vPERRE[3])
+            {
+            }
+            column(vIMPRE1; VIMPRE[1])
+            {
+            }
+            column(vIMPRE2; VIMPRE[2])
+            {
+            }
+            column(vIMPRE3; VIMPRE[3])
+            {
+            }
+            column(vTOTAL; vTOTAL)
             {
             }
             dataitem(CopyLoop; Integer)
             {
                 DataItemTableView = SORTING(Number);
+                column(TextoCopia; TextoCopia)
+                {
+                }
                 dataitem(PageLoop; Integer)
                 {
                     DataItemTableView = SORTING(Number)
                                         WHERE(Number = CONST(1));
-                    column(CompanyInfo2Picture; CompanyInfo2.Picture)
-                    {
-                    }
-                    column(CompanyInfo1Picture; CompanyInfo1.Picture)
-                    {
-                    }
-                    column(CompanyInfo3Picture; CompanyInfo3.Picture)
+                    column(Picture; CompanyInfo.Picture)
                     {
                     }
                     column(DocumentCaption; STRSUBSTNO(DocumentCaption, CopyText))
@@ -180,6 +237,9 @@ report 99070 "Formato Factura 01"
                     column(CompanyInfoPhoneNo; CompanyInfo."Phone No.")
                     {
                     }
+                    column(CompanyInfoFaxNo; CompanyInfo."Fax No.")
+                    {
+                    }
                     column(CustAddr6; CustAddr[6])
                     {
                     }
@@ -198,13 +258,19 @@ report 99070 "Formato Factura 01"
                     column(CompanyInfoBankName; CompanyInfo."Bank Name")
                     {
                     }
-                    column(CompanyInfoBankAccountNo; CompanyInfo."Bank Account No.")
+                    column(CompanyInfoBankAccountNo; txtCuenta)
+                    {
+                    }
+                    column(TxtCuenta2; rgBcoCli."CCC Bank No." + '.' + rgBcoCli."CCC Bank Branch No." + '.' + rgBcoCli."CCC Control Digits" + '.' + PADSTR(rgBcoCli."CCC Bank Account No.", 4) + aaa)
+                    {
+                    }
+                    column(CuentaTrans; CuentaTrans)
                     {
                     }
                     column(BilltoCustNo_SalesInvHdr; "Sales Invoice Header"."Bill-to Customer No.")
                     {
                     }
-                    column(PostingDate_SalesInvHdr; FORMAT("Sales Invoice Header"."Posting Date"))
+                    column(PostingDate_SalesInvHdr; FORMAT("Sales Invoice Header"."Posting Date", 0, 4))
                     {
                     }
                     column(VATNoText; VATNoText)
@@ -213,7 +279,7 @@ report 99070 "Formato Factura 01"
                     column(VATRegNo_SalesInvHeader; "Sales Invoice Header"."VAT Registration No.")
                     {
                     }
-                    column(DueDate_SalesInvHeader; FORMAT("Sales Invoice Header"."Due Date"))
+                    column(DueDate_SalesInvHeader; FORMAT("Sales Invoice Header"."Due Date", 0, 4))
                     {
                     }
                     column(SalesPersonText; SalesPersonText)
@@ -232,6 +298,9 @@ report 99070 "Formato Factura 01"
                     {
                     }
                     column(OrderNoText; OrderNoText)
+                    {
+                    }
+                    column(OrderNo_SalesInvHeader; "Sales Invoice Header"."Order No.")
                     {
                     }
                     column(CustAddr7; CustAddr[7])
@@ -258,7 +327,7 @@ report 99070 "Formato Factura 01"
                     column(PricesInclVATYesNo; FORMAT("Sales Invoice Header"."Prices Including VAT"))
                     {
                     }
-                    column(PageCaption; STRSUBSTNO(Text005, ''))
+                    column(PageCaption; PageCaptionCap)
                     {
                     }
                     column(PhoneNoCaption; PhoneNoCaptionLbl)
@@ -291,49 +360,13 @@ report 99070 "Formato Factura 01"
                     column(PricesInclVAT_SalesInvHdrCaption; "Sales Invoice Header".FIELDCAPTION("Prices Including VAT"))
                     {
                     }
-                    column(BultosCaption; BultosCaptionLbl)
+                    column(CACCaption; CACCaptionLbl)
                     {
                     }
-                    column(PesoCaption; PesoCaptionLbl)
+                    column(txtBIC; txtBIC)
                     {
                     }
-                    column(totalbultos; totalbultos)
-                    {
-                    }
-                    column(totalpeso; totalpeso)
-                    {
-                    }
-                    column(AgenciaCaption; AgenciaCaptionLbl)
-                    {
-                    }
-                    column(Name_Trasportista; transportista.Name)
-                    {
-                    }
-                    column(CompanyInfoFaxNo; CompanyInfo."Fax No.")
-                    {
-                    }
-                    column(ReferenciaCaption1; ReferenciaCaptionLbl)
-                    {
-                    }
-                    column(ConceptoCaption; ConceptoCaptionLbl)
-                    {
-                    }
-                    column(CantidadCaption; CantidadCaptionLbl)
-                    {
-                    }
-                    column(LongitudCaption; LongitudCaptionLbl)
-                    {
-                    }
-                    column(PrecioCaption; PrecioCaptionLbl)
-                    {
-                    }
-                    column(DescuentoCaption; DescuentoCaptionLbl)
-                    {
-                    }
-                    column(ImporteCaption; ImporteCaptionLbl)
-                    {
-                    }
-                    column(PesosCaption; PesosCaptionLbl)
+                    column(txtEmbPP; txtEmbPP)
                     {
                     }
                     dataitem(DimensionLoop1; Integer)
@@ -387,6 +420,7 @@ report 99070 "Formato Factura 01"
                     }
                     dataitem("Sales Invoice Line"; "Sales Invoice Line")
                     {
+
                         DataItemLink = "Document No." = FIELD("No.");
                         DataItemLinkReference = "Sales Invoice Header";
                         DataItemTableView = SORTING("Document No.", "Line No.");
@@ -401,7 +435,7 @@ report 99070 "Formato Factura 01"
                         column(Description_SalesInvLine; Description)
                         {
                         }
-                        column(Description2_SalesInvLine; "Description 2")
+                        column(txDesc; txDesc)
                         {
                         }
                         column(No_SalesInvoiceLine; "No.")
@@ -428,9 +462,6 @@ report 99070 "Formato Factura 01"
                         {
                         }
                         column(Type_SalesInvoiceLine; FORMAT("Sales Invoice Line".Type))
-                        {
-                        }
-                        column(Type2_SalesInvoiceLine; FORMAT(Type, 0, 2))
                         {
                         }
                         column(InvDiscountAmount; -"Inv. Discount Amount")
@@ -546,20 +577,59 @@ report 99070 "Formato Factura 01"
                         column(VATIdent_SalesInvLineCaption; FIELDCAPTION("VAT Identifier"))
                         {
                         }
-                        column(refer; refer)
+                        column(CodUnidadMedida; "Sales Invoice Line"."Unit of Measure Code")
                         {
                         }
-                        column(ReferenciaCaption; ReferenciaCaptionLbl)
+                        column(deImporte; deImporte)
                         {
                         }
-                        column(DocumentoExterno; SalesSHeader."External Document No.")
+                        column(BoolShowNSerie; BoolShowNSerieAux)
                         {
                         }
-                        column(Imprimir; Imprimir)
+                        dataitem(NumSerieBuffer; Integer)
                         {
-                        }
-                        column(Pesos; Pesos)
-                        {
+                            DataItemTableView = SORTING(Number)
+                                                WHERE(Number = FILTER(1 ..));
+                            column(NLote; tmpILE."Lot No.")
+                            {
+                            }
+                            column(CantidadLote; tmpILE.Quantity)
+                            {
+                            }
+                            column(UnidadMedidaLote; tmpILE."Unit of Measure Code")
+                            {
+                            }
+
+                            trigger OnAfterGetRecord();
+                            begin
+                                BoolShowNSerieAux := FALSE;
+
+                                IF Number = 1 THEN BEGIN
+                                    IF tmpILE.FINDFIRST() THEN BEGIN
+                                        IF (tmpILE."Lot No." <> '') THEN
+                                            BoolShowNSerieAux := TRUE;
+                                    END
+                                END
+                                ELSE
+                                    tmpILE.NEXT;
+                            end;
+
+                            trigger OnPostDataItem();
+                            begin
+
+                                tmpILE.DELETEALL;
+                            end;
+
+                            trigger OnPreDataItem();
+                            begin
+
+                                BoolShowNSerieAux := FALSE;
+
+                                IF NOT BoolShowNSerie THEN CurrReport.BREAK;
+                                //TrackingMng.RetrieveILEFromPostedInv(tmpILE,"Sales Invoice Line".RowID1);
+                                SETRANGE(Number, 1, tmpILE.COUNT);
+                                IF tmpILE.COUNT = 0 THEN BoolShowNSerieAux := FALSE;
+                            end;
                         }
                         dataitem("Sales Shipment Buffer"; Integer)
                         {
@@ -679,13 +749,28 @@ report 99070 "Formato Factura 01"
 
                         trigger OnAfterGetRecord();
                         begin
+
+                            //campmany
+                            //CVP 2017-03-03 ini
+                            "txtEmb-PP" := 'DTO. P.P.';
+                            txtEmbPPAux := TRUE;
+                            //CVP Fi
+
+                            IF "Inv. Discount Amount" <> 0 THEN BEGIN
+                                txtPortes := 'DTO. FACTURA';
+                            END ELSE BEGIN
+                                txtPortes := 'PORTES';
+                            END;
+
+                            //
+
+
                             PostedShipmentDate := 0D;
-                            Imprimir := FALSE;
                             IF Quantity <> 0 THEN
                                 PostedShipmentDate := FindPostedShipmentDate;
 
-                            //IF (Type = Type::"G/L Account") AND (NOT ShowInternalInfo) THEN
-                            //  "No." := '';
+                            IF (Type = Type::"G/L Account") AND (NOT ShowInternalInfo) THEN
+                                "No." := '';
 
                             IF VATPostingSetup.GET("Sales Invoice Line"."VAT Bus. Posting Group", "Sales Invoice Line"."VAT Prod. Posting Group") THEN BEGIN
                                 VATAmountLine.INIT;
@@ -694,114 +779,33 @@ report 99070 "Formato Factura 01"
                                 VATAmountLine."Tax Group Code" := "Tax Group Code";
                                 VATAmountLine."VAT %" := VATPostingSetup."VAT %";
                                 VATAmountLine."EC %" := VATPostingSetup."EC %";
-                                //VATAmountLine."VAT+EC Base" := "Sales Invoice Line".Amount;
-                                //VATAmountLine."Amount Including VAT+EC" := "Sales Invoice Line"."Amount Including VAT";
-                                //CVP 2016-07-21 ini
-                                //es treuen els ports
-                                IF (Type <> Type::"G/L Account") THEN BEGIN
-                                    VATAmountLine."Line Amount" := "Line Amount";
-                                END;
-                                //VATAmountLine."Pmt. Disc. Given Amount" := "Pmt. Disc. Given Amount";
-                                //CVP 2016-07-21 ini
-                                //es treuen els ports
-                                //IF "Allow Invoice Disc."  THEN
-                                //IF "Allow Invoice Disc." AND  (Type <> Type::"G/L Account") THEN // CBS: Se comenta para que tenga encuenta simpre todas las lineas.
-                                VATAmountLine."Inv. Disc. Base Amount" := "Line Amount";
-                                //CVP fi
+                                // VATAmountLine."VAT+EC Base" := "Sales Invoice Line".Amount;
+                                // VATAmountLine."Amount Including VAT+EC" := "Sales Invoice Line"."Amount Including VAT";
+                                VATAmountLine."Line Amount" := "Line Amount";
+                                // VATAmountLine."Pmt. Disc. Given Amount" := "Pmt. Disc. Given Amount";
+                                IF "Allow Invoice Disc." THEN
+                                    VATAmountLine."Inv. Disc. Base Amount" := "Line Amount";
                                 VATAmountLine."Invoice Discount Amount" := "Inv. Discount Amount";
                                 VATAmountLine.SetCurrencyCode("Sales Invoice Header"."Currency Code");
                                 VATAmountLine."VAT Difference" := "VAT Difference";
                                 VATAmountLine."EC Difference" := "EC Difference";
                                 IF "Sales Invoice Header"."Prices Including VAT" THEN
                                     VATAmountLine."Prices Including VAT" := TRUE;
+                                VATAmountLine."VAT Clause Code" := "VAT Clause Code";
                                 VATAmountLine.InsertLine;
 
-                                //CVP 2016-07-21 ini
-                                //Si son ports no han de sortir en el total
-                                IF (Type <> Type::"G/L Account") OR (Type = Type::"G/L Account") //AND (ConfCont."Cta. Portes" <> "No.")
-                                  THEN BEGIN
-                                    TotalSubTotal += "Line Amount";
-                                    TotalInvoiceDiscountAmount -= "Inv. Discount Amount";
-                                    TotalAmount += Amount;
-                                    TotalAmountVAT += "Amount Including VAT" - Amount;
-                                    TotalAmountInclVAT += "Amount Including VAT";
-                                    //es0007.begin
-                                    //TotalGivenAmount-= "Pmt. Disc. Given Amount";
-                                    //TotalPaymentDiscountOnVAT += -("Line Amount" - "Inv. Discount Amount" - "Pmt. Disc. Given Amount" - "Amount Including VAT");
-                                    //es0007.end
-                                END;
-                                //CVP fi
-                                //CVP 2016-07-22 ini
-                                //Calculem el total de la factura
-                                TotalFactura += "Line Amount";
-                                //CVP fi
-
-                                //CVP 2016-07-22 ini
-                                //incorporem el total dels ports
-                                ConfCont.GET;
-                                IF (Type = Type::"G/L Account") THEN BEGIN
-                                    ImpPortes := ImpPortes + (Quantity * "Unit Price");
-                                    Imprimir := TRUE;
-                                END;
+                                TotalSubTotal += "Line Amount";
+                                TotalInvoiceDiscountAmount -= "Inv. Discount Amount";
+                                TotalAmount += Amount;
+                                TotalAmountVAT += "Amount Including VAT" - Amount;
+                                TotalAmountInclVAT += "Amount Including VAT";
+                                // TotalGivenAmount-= "Pmt. Disc. Given Amount";
+                                TotalPaymentDiscountOnVAT += -("Line Amount" - "Inv. Discount Amount" - "Amount Including VAT");
                             END;
 
-                            refer := "No.";
-                            IF Type = Type::Item THEN BEGIN
-                                //CVP 2017-04-17 ini
-                                //posem els pesos en el report
-                                //IF NOT arti.GET("No.") THEN
-                                //  arti.INIT;
-                                Pesos := 0;
-                                IF NOT arti.GET("No.") THEN
-                                    arti.INIT;
-                                Pesos := arti."Net Weight" * "Sales Invoice Line".Quantity;
-                                //refer := arti.Referencia;
-                            END;
-
-                            //CVP 2016-08-25 ini
-                            //Falta posa en cada línia, el número de comanda a la qual pertany.
-                            SalesSHeader."External Document No." := '';
-                            IF SalesILineAux.NEXT <> 0 THEN;
-
-                            IF "Sales Invoice Line".Type = "Sales Invoice Line".Type::Item THEN BEGIN
-                                IF "Sales Invoice Line".Quantity = 0 THEN BEGIN
-                                    IF "Sales Invoice Line"."Shipment No." <> '' THEN BEGIN
-                                        IF NOT SalesSHeader.GET("Sales Invoice Line"."Shipment No.") THEN BEGIN
-                                            SalesSHeader.INIT;
-                                            SalesSHeader."External Document No." := '';
-                                        END;
-                                    END
-                                    ELSE BEGIN
-                                        IF NOT SalesSHeader.GET(SalesILineAux."Shipment No.") THEN BEGIN
-                                            SalesSHeader.INIT;
-                                            SalesSHeader."External Document No." := '';
-                                        END;
-                                    END;
-                                END;
-                            END
-                            //END;
-                            //CVP fi
-                            //CVP 2017-06-14 ini
-                            //Falta posa en cada línia de tipus '', el número de comanda a la qual pertany.
-                            ELSE BEGIN
-                                IF "Sales Invoice Line".Type = "Sales Invoice Line".Type::" " THEN BEGIN
-                                    IF "Sales Invoice Line".Quantity = 0 THEN BEGIN
-                                        IF "Sales Invoice Line"."Shipment No." <> '' THEN BEGIN
-                                            IF NOT SalesSHeader.GET("Sales Invoice Line"."Shipment No.") THEN BEGIN
-                                                SalesSHeader.INIT;
-                                                SalesSHeader."External Document No." := '';
-                                            END;
-                                        END
-                                        ELSE BEGIN
-                                            IF NOT SalesSHeader.GET(SalesILineAux."Shipment No.") THEN BEGIN
-                                                SalesSHeader.INIT;
-                                                SalesSHeader."External Document No." := '';
-                                            END;
-                                        END;
-                                    END;
-                                END;
-                            END;
-                            //CVP fi
+                            //txDesc := Description+' '+"Description 2" + ' '+ Observaciones;
+                            deImporte := "Unit Price" * Quantity;
+                            //**campmany
                         end;
 
                         trigger OnPreDataItem();
@@ -816,27 +820,23 @@ report 99070 "Formato Factura 01"
                             IF NOT MoreLines THEN
                                 CurrReport.BREAK;
                             SETRANGE("Line No.", 0, "Line No.");
-                            CurrReport.CREATETOTALS("Line Amount", Amount, "Amount Including VAT");
-                            //CVP 20016-07-16 ini
-                            //incorporem el total dels ports
-                            //currreport.createtotals(ImpPortes);
-                            //CVP fi
 
-                            //CVP 2016-08-24 ini
-                            //Taula auxiliar per recollir el número de document extern
-                            SalesILineAux.COPYFILTERS("Sales Invoice Line");
-                            IF SalesILineAux.FINDFIRST THEN;
-                            //CVP fi
+
+                            // Marj, Alloza
+                            IF (boAgruparLin) THEN BEGIN
+                                "Sales Invoice Line".SETCURRENTKEY(Type, "No.", "Unit Price");
+                                // CurrReport.CREATETOTALS(Quantity,Amount,"Cantidad 2");
+                            END;
+
+                            CurrReport.CREATETOTALS("Line Amount", Amount, "Amount Including VAT", "Inv. Discount Amount");
+                            //CVP 2017-03-03 ini
+                            //potser en ealguna linia no n'hi ha i fa que surti malament el literal. ha de sortir sempre que n'hi hagi
+                            txtEmbPPAux := FALSE;
                         end;
                     }
                     dataitem(VATCounter; Integer)
                     {
                         DataItemTableView = SORTING(Number);
-                        column(VATAmountLineVATBase; VATAmountLine."VAT Base")
-                        {
-                            AutoFormatExpression = "Sales Invoice Header"."Currency Code";
-                            AutoFormatType = 1;
-                        }
                         column(VATAmountLineVATAmount; VATAmountLine."VAT Amount")
                         {
                             AutoFormatExpression = "Sales Invoice Header"."Currency Code";
@@ -907,22 +907,14 @@ report 99070 "Formato Factura 01"
                         column(TotalCaption; TotalCaptionLbl)
                         {
                         }
-                        column(ImpPortes; ImpPortes)
-                        {
-                        }
-                        column(TotalFactura; TotalFactura)
-                        {
-                        }
 
                         trigger OnAfterGetRecord();
                         begin
                             VATAmountLine.GetLine(Number);
-                            //es0007.begin
                             IF VATAmountLine."VAT Amount" = 0 THEN
                                 VATAmountLine."VAT %" := 0;
                             IF VATAmountLine."EC Amount" = 0 THEN
                                 VATAmountLine."EC %" := 0;
-                            //es0007.end
                         end;
 
                         trigger OnPreDataItem();
@@ -932,6 +924,51 @@ report 99070 "Formato Factura 01"
                               VATAmountLine."Line Amount", VATAmountLine."Inv. Disc. Base Amount",
                               VATAmountLine."Invoice Discount Amount", VATAmountLine."VAT Amount",
                               VATAmountLine."EC Amount");
+                        end;
+                    }
+                    dataitem(VATClauseEntryCounter; Integer)
+                    {
+                        DataItemTableView = SORTING(Number);
+                        column(VATClauseVATIdentifier; VATAmountLine."VAT Identifier")
+                        {
+                        }
+                        column(VATClauseCode; VATAmountLine."VAT Clause Code")
+                        {
+                        }
+                        column(VATClauseDescription; VATClause.Description)
+                        {
+                        }
+                        column(VATClauseDescription2; VATClause."Description 2")
+                        {
+                        }
+                        column(VATClauseAmount; VATAmountLine."VAT Amount")
+                        {
+                            AutoFormatExpression = "Sales Invoice Header"."Currency Code";
+                            AutoFormatType = 1;
+                        }
+                        column(VATClausesCaption; VATClausesCap)
+                        {
+                        }
+                        column(VATClauseVATIdentifierCaption; VATIdentifierCaptionLbl)
+                        {
+                        }
+                        column(VATClauseVATAmtCaption; VATAmtCaptionLbl)
+                        {
+                        }
+
+                        trigger OnAfterGetRecord();
+                        begin
+                            VATAmountLine.GetLine(Number);
+                            IF NOT VATClause.GET(VATAmountLine."VAT Clause Code") THEN
+                                CurrReport.SKIP;
+                            VATClause.TranslateDescription("Sales Invoice Header"."Language Code");
+                        end;
+
+                        trigger OnPreDataItem();
+                        begin
+                            CLEAR(VATClause);
+                            SETRANGE(Number, 1, VATAmountLine.COUNT);
+                            CurrReport.CREATETOTALS(VATAmountLine."VAT Amount");
                         end;
                     }
                     dataitem(VatCounterLCY; Integer)
@@ -965,9 +1002,14 @@ report 99070 "Formato Factura 01"
                         trigger OnAfterGetRecord();
                         begin
                             VATAmountLine.GetLine(Number);
-
-                            VALVATBaseLCY := ROUND(VATAmountLine."VAT Base" / "Sales Invoice Header"."Currency Factor");
-                            VALVATAmountLCY := ROUND(VATAmountLine."VAT Amount" / "Sales Invoice Header"."Currency Factor");
+                            VALVATBaseLCY :=
+                              VATAmountLine.GetBaseLCY(
+                                "Sales Invoice Header"."Posting Date", "Sales Invoice Header"."Currency Code",
+                                "Sales Invoice Header"."Currency Factor");
+                            VALVATAmountLCY :=
+                              VATAmountLine.GetAmountLCY(
+                                "Sales Invoice Header"."Posting Date", "Sales Invoice Header"."Currency Code",
+                                "Sales Invoice Header"."Currency Factor");
                         end;
 
                         trigger OnPreDataItem();
@@ -1032,6 +1074,12 @@ report 99070 "Formato Factura 01"
                         column(SelltoCustNo_SalesInvHdrCaption; "Sales Invoice Header".FIELDCAPTION("Sell-to Customer No."))
                         {
                         }
+                        dataitem("Company Information"; "Company Information")
+                        {
+                            column(Phone; CompanyInfo."Phone No.")
+                            {
+                            }
+                        }
 
                         trigger OnPreDataItem();
                         begin
@@ -1043,25 +1091,23 @@ report 99070 "Formato Factura 01"
 
                 trigger OnAfterGetRecord();
                 begin
-                    IF Number > 1 THEN BEGIN
-                        CopyText := Text003;
-                        OutputNo += 1;
+                    IF NOT CopiaInterna THEN BEGIN
+                        IF Number > 1 THEN BEGIN
+                            TextoCopia := 'COPIA ' + FORMAT(Number - 1);
+                            OutputNo += 1;
+                        END;
                     END;
                     CurrReport.PAGENO := 1;
+
+
 
                     TotalSubTotal := 0;
                     TotalInvoiceDiscountAmount := 0;
                     TotalAmount := 0;
                     TotalAmountVAT := 0;
                     TotalAmountInclVAT := 0;
-                    // es0007.begin
                     TotalGivenAmount := 0;
                     TotalPaymentDiscountOnVAT := 0;
-                    // es0007.end
-                    //CVP 2016-07-22 ini
-                    TotalFactura := 0;
-                    ImpPortes := 0;
-                    //CVP fi
                 end;
 
                 trigger OnPostDataItem();
@@ -1073,28 +1119,58 @@ report 99070 "Formato Factura 01"
                 trigger OnPreDataItem();
                 begin
                     NoOfLoops := ABS(NoOfCopies) + Cust."Invoice Copies" + 1;
-                    IF NoOfLoops <= 0 THEN
-                        NoOfLoops := 1;
-                    CopyText := '';
+                    IF NOT CopiaInterna THEN BEGIN
+                        TextoCopia := 'ORIGINAL';
+                        IF NoOfLoops <= 0 THEN BEGIN
+                            NoOfLoops := 1;
+                            TextoCopia := 'ORIGINAL';
+                        END;
+                    END ELSE BEGIN
+                        NoOfLoops := ABS(NoOfCopies) + 1;
+                        TextoCopia := 'INTERNA';
+                    END;
                     SETRANGE(Number, 1, NoOfLoops);
                     OutputNo := 1;
                 end;
             }
 
             trigger OnAfterGetRecord();
+            var
+                recEmpresa: Record "Company Information";
+                recFormaPago: Record "Payment Method";
             begin
+                //**Campmany
+                TextoCopia := '';
+                InfoEmpresa.GET;
+                FormatDire.Company(DirEmpresa, InfoEmpresa);
+
+                vIMPBRUTO := GetImporteBruto("Sales Invoice Header");
+                vDTOPP := GetImporteDtoPP("Sales Invoice Header");
+                vDTOFAC := GetImporteDtoFAC("Sales Invoice Header");
+                vTOTAL := GetImporteTotal("Sales Invoice Header");
+                AsignarVariablesVAT("Sales Invoice Header");
+
+                IF "Sales Invoice Header"."Shortcut Dimension 1 Code" = 'SERVER' THEN BEGIN
+                    // CompanyAddr[1] := CompanyInfo."Nombre fiscal Server";
+                    CompanyAddr[2] := CompanyInfo.Address;
+                    CompanyAddr[3] := CompanyInfo."Address 2";
+                    CompanyAddr[4] := CompanyInfo."Post Code" + ' ' + CompanyInfo.City + ' - ' + CompanyInfo.County;
+                    // CompanyAddr[5] := 'Tel. ' + CompanyInfo."Phone No. Server" + ' - Fax ' + CompanyInfo."Fax No. Server";
+                    // CompanyAddr[6] := CompanyInfo."E-Mail Server";
+                END ELSE BEGIN
+                    // CompanyAddr[1] := CompanyInfo."Nombre fiscal";
+                    CompanyAddr[2] := CompanyInfo.Address;
+                    CompanyAddr[3] := CompanyInfo."Address 2";
+                    CompanyAddr[4] := CompanyInfo."Post Code" + ' ' + CompanyInfo.City + ' - ' + CompanyInfo.County;
+                    CompanyAddr[5] := 'Tel. ' + CompanyInfo."Phone No." + ' - Fax ' + CompanyInfo."Fax No.";
+                    CompanyAddr[6] := CompanyInfo."Home Page";
+
+                END;
+
                 if "language Code" <> '' then begin
                     if Language.get("Language Code") then
                         CurrReport.LANGUAGE := Language."Windows Language ID";
                 end;
-                FOR i := 1 TO 4 DO
-                    FechaVto[i] := 0D;
-
-                FOR i := 1 TO 4 DO BEGIN
-                    tottermini[i] := 0;
-                    termfinanc[i] := 0;
-                    ImporteVto[i] := 0;
-                END;
 
                 IF RespCenter.GET("Responsibility Center") THEN BEGIN
                     FormatAddr.RespCenter(CompanyAddr, RespCenter);
@@ -1139,87 +1215,6 @@ report 99070 "Formato Factura 01"
                 IF NOT Cust.GET("Bill-to Customer No.") THEN
                     CLEAR(Cust);
 
-                IF "Cust. Bank Acc. Code" <> '' THEN BEGIN
-                    IF NOT g_recBcoClie.GET("Sell-to Customer No.", "Cust. Bank Acc. Code") THEN BEGIN
-                        g_recBcoClie.INIT;
-                        g_recBcoClie."Customer No." := '';
-                        g_recBcoClie.Code := '';
-                    END;
-                END ELSE BEGIN
-                    g_recBcoClie.SETRANGE("Customer No.", "Sell-to Customer No.");
-                    IF NOT g_recBcoClie.FIND('-') THEN BEGIN
-                        g_recBcoClie.INIT;
-                        g_recBcoClie."Customer No." := '';
-                        g_recBcoClie.Code := '';
-                    END;
-                END;
-
-                // IF NOT g_recBcoClie.GET("Bill-to Customer No.","Cust. Bank Acc. Code") THEN
-                //  CLEAR(g_recBcoClie);
-
-                IF "Payment Method Code" = '' THEN
-                    FormaPago.INIT
-                ELSE
-                    FormaPago.GET("Payment Method Code");
-
-                /*Sacar Vtos*/
-                Movcli.SETCURRENTKEY(Movcli."Document Type", Movcli."Document No.", Movcli."Customer No.");
-                IF (FormaPago."Create Bills") THEN
-                    Movcli.SETRANGE(Movcli."Document Type", Movcli."Document Type"::Bill)
-                ELSE
-                    Movcli.SETRANGE(Movcli."Document Type", Movcli."Document Type"::Invoice);
-                Movcli.SETRANGE(Movcli."Document No.", "Sales Invoice Header"."No.");
-                Movcli.SETRANGE(Movcli."Customer No.", "Sales Invoice Header"."Sell-to Customer No.");
-                Movcli.SETRANGE(Movcli."Posting Date", "Sales Invoice Header"."Posting Date");
-                //Movcli.SETFILTER(Movcli."Remaining Amount",'<>0');
-                cont := 0;
-                IF Movcli.FIND('-') THEN
-                    REPEAT
-                        Movcli.CALCFIELDS(Movcli."Remaining Amount", Movcli.Amount);
-                        IF Movcli."Remaining Amount" <> 0 THEN BEGIN
-                            cont := cont + 1;
-                            IF (cont <= 4) THEN BEGIN
-                                FechaVto[cont] := Movcli."Due Date";
-                                ImporteVto[cont] := Movcli.Amount;
-                            END;
-                        END;
-                    UNTIL Movcli.NEXT = 0;
-
-                FOR i := 1 TO 4 DO BEGIN
-                    tottermini[i] := 0;
-
-                    termfinanc[i] := 0;
-                    ImporteVto[i] := 0;
-                END;
-
-                concl.SETCURRENTKEY("Document Type", "Document No.", "Customer No.");
-                //CVP 2016-12-21 ini
-                //el client demana que sorti el total de la factura
-                //concl.SETRANGE("Document Type",concl."Document Type"::Bill);{..cartera; 6}
-                concl.SETRANGE("Document Type", concl."Document Type"::Invoice);
-                concl.SETRANGE("Document No.", "Sales Invoice Header"."No.");
-                concl.SETRANGE("Customer No.", "Sales Invoice Header"."Sell-to Customer No.");
-                //concl.SETRANGE(Open,TRUE);
-
-                Numven := 0;
-                IF concl.FIND('-') THEN BEGIN
-                    Numven := concl.COUNT;
-                    v := 0;
-                    REPEAT
-                        concl.CALCFIELDS(Amount);
-                        v := v + 1;
-                        tottermini[v] := concl.Amount;
-                        IF NOT pago.GET("Sales Invoice Header"."Payment Terms Code") THEN BEGIN
-                            pago.INIT;
-                            pago.Code := '';
-                        END;
-                        //IF pago."% Financiación" <> 0 THEN BEGIN
-                        //termfinanc[v]:=pago."% Financiación";
-                        ImporteVto[v] := Base[1] / Numven;
-                    //END;
-                    UNTIL (concl.NEXT(1) = 0) OR (v > 4);
-                END;
-
                 IF "Payment Terms Code" = '' THEN
                     PaymentTerms.INIT
                 ELSE BEGIN
@@ -1243,6 +1238,8 @@ report 99070 "Formato Factura 01"
                     IF ShipToAddr[i] <> CustAddr[i] THEN
                         ShowShippingAddr := TRUE;
 
+                ShowCashAccountingCriteria;
+
                 IF LogInteraction THEN
                     IF NOT CurrReport.PREVIEW THEN BEGIN
                         IF "Bill-to Contact No." <> '' THEN
@@ -1255,61 +1252,177 @@ report 99070 "Formato Factura 01"
                               "Campaign No.", "Posting Description", '');
                     END;
 
+                //*Campmany
 
-                totalpeso := 0;
-                totalbultos := 0;
+                IF "Currency Code" = '' THEN
+                    CodDivisa2 := ConfCG."LCY Code"
+                ELSE
+                    CodDivisa2 := "Currency Code";
 
-                IF NOT transportista.GET("Shipping Agent Code") THEN BEGIN
-                    transportista.INIT;
-                    transportista.Code := '';
-                END;
-
-                linventa2.SETRANGE("Document No.", "No.");
-                IF linventa2.FIND('-') THEN BEGIN
-                    REPEAT
-                        //IF Albaran.GET(linventa2."Nº Albarán") OR  Albaran.GET(linventa2."Shipment No.")
-                        //THEN BEGIN
-                        IF NumAlb <> Albaran."No." THEN BEGIN
-                            IF linventa2."Shipment No." = '' THEN BEGIN
-                                //NumAlb := linventa2."Nº Albarán";
-                            END ELSE BEGIN
-                                IF linventa2."Shipment No." <> '' THEN BEGIN
-                                    NumAlb := linventa2."Shipment No.";
-                                END;
-                            END;
-                            //totalbultos := totalbultos + Albaran.Bultos;
-                            //totalpeso := totalpeso + Albaran.Peso;
-                        END;
-                        //END ELSE BEGIN
-                        Albaran.INIT;
-                        Albaran."No." := '';
-                    //END;
-                    UNTIL linventa2.NEXT = 0;
-                END;
-                linventa2.RESET;
-
-            end;
-
-            trigger OnPostDataItem();
-            begin
-
-                // IF NOT g_recBcoClie.GET("Bill-to Customer No.","Cust. Bank Acc. Code") THEN
-                //  CLEAR(g_recBcoClie);
-
-                IF "Cust. Bank Acc. Code" <> '' THEN BEGIN
-                    IF NOT g_recBcoClie.GET("Sell-to Customer No.", "Cust. Bank Acc. Code") THEN BEGIN
-                        g_recBcoClie.INIT;
-                        g_recBcoClie."Customer No." := '';
-                        g_recBcoClie.Code := '';
-                    END;
+                IF "Order No." = '' THEN
+                    TextNoPedido := ''
+                ELSE
+                    TextNoPedido := FIELDNAME("Order No.");
+                IF "Salesperson Code" = '' THEN BEGIN
+                    RepreVtasComp.INIT;
+                    DescriVendedor := '';
                 END ELSE BEGIN
-                    g_recBcoClie.SETRANGE("Customer No.", "Sell-to Customer No.");
-                    IF NOT g_recBcoClie.FIND('-') THEN BEGIN
-                        g_recBcoClie.INIT;
-                        g_recBcoClie."Customer No." := '';
-                        g_recBcoClie.Code := '';
+                    IF RepreVtasComp.GET("Salesperson Code") THEN
+                        DescriVendedor := 'Representante';
+                END;
+                IF "Your Reference" = '' THEN
+                    DescriRefer := ''
+                ELSE
+                    DescriRefer := FIELDNAME("Your Reference");
+                IF "VAT Registration No." = '' THEN
+                    TextoCIF := ''
+                ELSE
+                    TextoCIF := FIELDNAME("VAT Registration No.");
+                IF "Currency Code" = '' THEN BEGIN
+                    ConfCG.TESTFIELD("LCY Code");
+                    TotalTexto := STRSUBSTNO('Total %1', ConfCG."LCY Code");
+                    TextoTotIVAIncl := STRSUBSTNO('Total %1 incl. IVA', ConfCG."LCY Code");
+                END ELSE BEGIN
+                    TotalTexto := STRSUBSTNO('Total %1', "Currency Code");
+                    TextoTotIVAIncl := STRSUBSTNO('Total %1 incl. IVA', "Currency Code");
+                END;
+
+                //FormatDire.SalesInvSellTo(DirClie,"Sales Invoice Header");
+                //ARP Obtenemos la dirección de FACTURA del cliente (si existe).
+                rDirFactura.INIT;
+                //IF rDirFactura.GET("Sell-to Customer No.",'FACTURA') THEN
+                // FormatDire.SalesFacturaToNoContact(DirClie, rDirFactura)
+                //ELSE
+                //FormatDire.SalesInvSellToNoContact(DirClie,"Sales Invoice Header");
+
+                Clie.GET("Bill-to Customer No.");
+                IF "Payment Terms Code" = '' THEN
+                    TerminosPago.INIT
+                ELSE
+                    TerminosPago.GET("Payment Terms Code");
+                IF "Payment Method Code" = '' THEN
+                    FormaPago.INIT
+                ELSE
+                    FormaPago.GET("Payment Method Code");
+                IF "Shipment Method Code" = '' THEN
+                    CondEnv.INIT
+                ELSE
+                    CondEnv.GET("Shipment Method Code");
+                FormatDire.SalesInvBillTo(EnvADir, "Sales Invoice Header");
+                MostrarDireEnvio := "Sell-to Customer No." <> "Bill-to Customer No.";
+                FOR i := 1 TO ARRAYLEN(EnvADir) DO
+                    IF EnvADir[i] <> DirClie[i] THEN
+                        MostrarDireEnvio := TRUE;
+
+                //Rellena Matriz con los Vtos e importes
+                CLEAR(aFechaVto);
+                CLEAR(aImpVto);
+                rgContCli.SETCURRENTKEY(rgContCli."Document Type", rgContCli."Document No.", rgContCli."Customer No.");
+                rgContCli.SETRANGE(rgContCli."Document Type", rgContCli."Document Type"::Bill);
+                rgContCli.SETRANGE(rgContCli."Document No.", "Sales Invoice Header"."No.");
+                rgContCli.SETRANGE(rgContCli."Customer No.", "Sales Invoice Header"."Bill-to Customer No.");
+                numa := 0;
+                IF rgContCli.FIND('-') THEN
+                    REPEAT
+                        numa := numa + 1;
+                        aFechaVto[numa] := rgContCli."Due Date";
+                        //////////////////////////////////////////// 11/11/02 jts
+                        rgContCli.CALCFIELDS(Amount);
+                        ////////////////////////////////////////////
+                        aImpVto[numa] := rgContCli.Amount;
+                    UNTIL (rgContCli.NEXT = 0) OR (numa = 3);
+                IF numa = 0 THEN BEGIN
+                    aFechaVto[1] := "Sales Invoice Header"."Due Date";
+                    CALCFIELDS("Sales Invoice Header"."Amount Including VAT");
+                    aImpVto[1] := "Sales Invoice Header"."Amount Including VAT";
+                END;
+                //REDIVA Busca el banco del cliente
+                textCCC := '';
+                aPagos := '';
+                IF (FormaPago."Create Bills" AND (FormaPago."Collection Agent" = FormaPago."Collection Agent"::Bank)) THEN BEGIN
+                    //// xavals 12/05/06 variable para ocultar la cuenta entera del cliente
+                    aaa := '* * * * *';
+                    aPagos := 'Autorización expresa de domiciliación bancaria en la cuenta arriba indicada, por el importe contenido en la ';
+                    aPagos := aPagos + 'presente factura, a menos que se opongan expresamente en un plazo de 5 días desde su recepción.';
+                    ////
+                    IF NOT rgBcoCli.GET("Sales Invoice Header"."Bill-to Customer No.",
+                                        "Sales Invoice Header"."Cust. Bank Acc. Code") THEN BEGIN
+                        CLEAR(rgBcoCli);
+
+                        aaa := '';
+                        aPagos := '';
+                    END
+                END ELSE BEGIN
+                    aaa := '';
+                    CLEAR(rgBcoCli);
+                END;
+
+                // Marj, Alloza
+
+                rgCliente.GET("Sales Invoice Header"."Sell-to Customer No.");
+                CLEAR(Duplicado);
+                IF "Sales Invoice Header"."No. Printed" <> 0 THEN
+                    Duplicado := 'DUPLICADO';
+
+                // MIGVAZ Cogemos los datos del nº de proveedor para el cliente y de la referencia del cliente.
+                //IF rgCliente."Proveedor en Clte" <> '' THEN
+                // RefProvSuNtraFra := 'REF. PROVEEDOR: ' + rgCliente."Proveedor en Clte" + '    '
+                //ELSE
+                //RefProvSuNtraFra := '';
+
+                IF "Sales Invoice Header"."Your Reference" <> '' THEN
+                    RefProvSuNtraFra := RefProvSuNtraFra + 'SU/NTRA. REF.: ' + "Sales Invoice Header"."Your Reference";
+
+                // Gestió preus amb IVA
+                IF "Prices Including VAT" THEN BEGIN
+                    txPreciosIVAinc := 'PRECIOS IVA INCLUIDO';
+                END ELSE BEGIN
+                    txPreciosIVAinc := '';
+                END;
+
+
+                rgConfVenta.GET;
+                txOferta1 := '';
+                //IF "Shortcut Dimension 1 Code" = 'SERVER' THEN
+                // txOferta1 := rgConfVenta."Texto Factura Server"
+                //ELSE
+                // txOferta1 := rgConfVenta."Texto Factura Campmany";
+
+                //*Campmany
+
+                //*Campmany
+
+                txtCuenta := '';
+                txtBIC := '';
+                CuentaTrans := FALSE;
+                IF recFormaPago.GET("Sales Invoice Header"."Payment Method Code") THEN BEGIN
+                    IF (recFormaPago."Create Bills") AND (recFormaPago."Bill Type" = recFormaPago."Bill Type"::Transfer) THEN BEGIN
+                        //recEmpresa.GET;
+                        //txtCuenta := recEmpresa."CCC Bank No."+'.'+recEmpresa."CCC Bank Branch No."+'.'+recEmpresa."CCC Control Digits"+'.';
+                        //txtCuenta := txtCuenta + recEmpresa."CCC Bank Account No.";
+                        txtCuenta := 'IBAN ES91 0081 0114 4200 0103 3009';
+                        //CVP 2016-06-16 ini
+                        //txtBIC := '';
+                        txtBIC := Numero;
+                        //CVP fi
+                        //CVP 2016-12-28 ini
+                        //Variable per saber si s'ha d'escriure o  no la variable txtcuenta
+                        CuentaTrans := TRUE;
+                        //CVP fi
                     END;
                 END;
+
+                //CVP 2017-03-06 ini
+                txtEmbPP := '';
+                txtEmbPPAux := FALSE;
+                shiplines.RESET;
+                shiplines.SETRANGE(shiplines."Document No.", "Sales Invoice Header"."No.");
+                IF shiplines.FINDSET THEN
+                    REPEAT
+                        txtEmbPP := 'DTO. P.P.';
+                        txtEmbPPAux := TRUE;
+                    UNTIL shiplines.NEXT = 0;
+                //CVP fi
             end;
         }
     }
@@ -1330,6 +1443,22 @@ report 99070 "Formato Factura 01"
                     {
                         CaptionML = ENU = 'No. of Copies',
                                     ESP = 'Nº copias';
+                    }
+                    field(CopiaInterna; CopiaInterna)
+                    {
+                        Caption = 'Copia Interna';
+                    }
+                    field(ImprimirLogos; ImprimirLogos)
+                    {
+                        Caption = 'Imprimir Logos';
+                    }
+                    field(boolShowNumSerie; BoolShowNSerie)
+                    {
+                        Caption = 'Mostrar número de lote';
+                    }
+                    field(boAgruparLin; boAgruparLin)
+                    {
+                        Caption = 'Agrupar Lineas';
                     }
                     field(ShowInternalInfo; ShowInternalInfo)
                     {
@@ -1364,6 +1493,7 @@ report 99070 "Formato Factura 01"
         begin
             InitLogInteraction;
             LogInteractionEnable := LogInteraction;
+            ImprimirLogos := TRUE;
         end;
     }
 
@@ -1376,26 +1506,9 @@ report 99070 "Formato Factura 01"
         GLSetup.GET;
         CompanyInfo.GET;
         SalesSetup.GET;
+        ConfCG.GET;
 
-        CASE SalesSetup."Logo Position on Documents" OF
-            SalesSetup."Logo Position on Documents"::"No Logo":
-                ;
-            SalesSetup."Logo Position on Documents"::Left:
-                BEGIN
-                    CompanyInfo3.GET;
-                    CompanyInfo3.CALCFIELDS(Picture);
-                END;
-            SalesSetup."Logo Position on Documents"::Center:
-                BEGIN
-                    CompanyInfo1.GET;
-                    CompanyInfo1.CALCFIELDS(Picture);
-                END;
-            SalesSetup."Logo Position on Documents"::Right:
-                BEGIN
-                    CompanyInfo2.GET;
-                    CompanyInfo2.CALCFIELDS(Picture);
-                END;
-        END;
+        //CompanyInfo.CALCFIELDS(Picture);
     end;
 
     trigger OnPreReport();
@@ -1410,7 +1523,7 @@ report 99070 "Formato Factura 01"
         Text002: TextConst ENU = 'Total %1 Incl. VAT', ESP = 'Total %1 IVA incl.';
         Text003: TextConst ENU = 'COPY', ESP = 'COPIA';
         Text004: TextConst ENU = 'Sales - Invoice %1', ESP = 'Ventas - Factura %1';
-        Text005: TextConst ENU = 'Page %1', ESP = 'Pág. %1';
+        PageCaptionCap: TextConst ENU = 'Page %1 of %2', ESP = 'Página %1 de %2';
         Text006: TextConst ENU = 'Total %1 Excl. VAT', ESP = 'Total %1 IVA excl.';
         GLSetup: Record "General Ledger Setup";
         ShipmentMethod: Record "Shipment Method";
@@ -1429,6 +1542,7 @@ report 99070 "Formato Factura 01"
         Language: Record "Language";
         CurrExchRate: Record "Currency Exchange Rate";
         TempPostedAsmLine: Record "Posted Assembly Line" temporary;
+        VATClause: Record "VAT Clause";
         SalesInvCountPrinted: Codeunit "Sales Inv.-Printed";
         FormatAddr: Codeunit "Format Address";
         SegManagement: Codeunit "SegManagement";
@@ -1494,6 +1608,7 @@ report 99070 "Formato Factura 01"
         UnitPriceCaptionLbl: TextConst ENU = 'Unit Price', ESP = 'Precio venta';
         DiscountCaptionLbl: TextConst ENU = 'Discount %', ESP = '% Descuento';
         AmtCaptionLbl: TextConst ENU = 'Amount', ESP = 'Importe';
+        VATClausesCap: TextConst ENU = 'VAT Clause', ESP = 'Cláusula de IVA';
         PostedShpDateCaptionLbl: TextConst ENU = 'Posted Shipment Date', ESP = 'Fecha envío registrada';
         InvDiscAmtCaptionLbl: TextConst ENU = 'Invoice Discount Amount', ESP = 'Importe descuento factura';
         SubtotalCaptionLbl: TextConst ENU = 'Subtotal', ESP = 'Subtotal';
@@ -1511,59 +1626,106 @@ report 99070 "Formato Factura 01"
         InvPmtDiscCaptionLbl: TextConst ENU = 'Invoice and Payment Discounts', ESP = 'Descuentos facturas y pagos';
         ECAmtCaptionLbl: TextConst ENU = 'EC Amount', ESP = 'Importe RE';
         ECCaptionLbl: TextConst ENU = 'EC %', ESP = '% RE';
-        TotalCaptionLbl: TextConst ENU = 'TOTAL', ESP = 'TOTAL';
+        TotalCaptionLbl: TextConst ENU = 'Total', ESP = 'Total';
         VALVATBaseLCYCaption1Lbl: TextConst ENU = 'VAT Base', ESP = 'Base IVA';
+        VATAmtCaptionLbl: TextConst ENU = 'VAT Amount', ESP = 'Importe IVA';
+        VATIdentifierCaptionLbl: TextConst ENU = 'VAT Identifier', ESP = 'Identific. IVA';
         ShiptoAddressCaptionLbl: TextConst ENU = 'Ship-to Address', ESP = 'Envío a-Dirección';
         PmtTermsDescCaptionLbl: TextConst ENU = 'Payment Terms', ESP = 'Términos pago';
         ShpMethodDescCaptionLbl: TextConst ENU = 'Shipment Method', ESP = 'Condiciones envío';
         PmtMethodDescCaptionLbl: TextConst ENU = 'Payment Method', ESP = 'Forma pago';
         DocDateCaptionLbl: TextConst ENU = 'Document Date', ESP = 'Fecha emisión documento';
-        HomePageCaptionLbl: TextConst ENU = 'Home Page', ESP = 'Página Web';
+        HomePageCaptionCap: TextConst ENU = 'Home Page', ESP = 'Página Web';
         EmailCaptionLbl: TextConst ENU = 'E-Mail', ESP = 'Correo electrónico';
-        transportista: Record "Shipping Agent";
-        totalpeso: Decimal;
-        totalbultos: Decimal;
-        AgenciaCaptionLbl: TextConst ENU = 'Agency', ESP = 'Agencia';
-        BultosCaptionLbl: TextConst ENU = 'Packets', ESP = 'Bultos';
-        PesoCaptionLbl: TextConst ENU = 'Weight', ESP = 'Peso';
-        Albaran: Record "Sales Shipment Header";
-        linventa2: Record "Sales Invoice Line";
-        NumAlb: Code[20];
-        FaxNoCaptionLbl: TextConst ENU = 'Fax No.', ESP = 'Nº fax';
-        refer: Text[30];
-        arti: Record "Item";
-        ReferenciaCaptionLbl: TextConst ENU = 'Reference', ESP = 'Referencia';
+        CACCaptionLbl: Text;
+        CACTxt: TextConst ENU = 'Régimen especial del criterio de caja', ESP = 'Régimen especial del criterio de caja';
+        ConfCG: Record "General Ledger Setup";
+        CondEnv: Record "Shipment Method";
+        TerminosPago: Record "Payment Terms";
         FormaPago: Record "Payment Method";
-        formapagodesc: Text[30];
-        CantidadCaptionLbl: TextConst ENU = 'Quantity', ESP = 'Cantidad';
-        ConceptoCaptionLbl: TextConst ENU = 'Concept', ESP = 'Concepto';
-        PrecioCaptionLbl: TextConst ENU = 'Price', ESP = 'Precio';
-        DescuentoCaptionLbl: TextConst ENU = '%Discount', ESP = '% Dto.';
-        ImporteCaptionLbl: TextConst ENU = 'Amount', ESP = 'Importe';
-        LongitudCaptionLbl: TextConst ENU = 'Lenght', ESP = 'Longitud';
-        PagaderaCaptionLbl: TextConst ENU = 'PAY IN:', ESP = 'PAGADERA EN:';
-        VencimientoCaptionLbl: TextConst ENU = 'DUE DATE', ESP = 'VENCIMIENTO';
-        FinCaptionLbl: TextConst ENU = '% FIN.', ESP = '% FIN.';
-        g_recBcoClie: Record "Customer Bank Account";
-        Movcli: Record "Cust. Ledger Entry";
-        FechaVto: array[4] of Date;
-        ImporteVto: array[4] of Decimal;
-        cont: Integer;
-        termfinanc: array[5] of Decimal;
-        tottermini: array[5] of Decimal;
-        concl: Record "Cust. Ledger Entry";
-        Numven: Integer;
-        v: Integer;
-        pago: Record "Payment Terms";
-        Base: array[4] of Decimal;
-        ImpPortes: Decimal;
-        TotalFactura: Decimal;
-        SalesILineAux: Record "Sales Invoice Line";
-        SalesSHeader: Record "Sales Shipment Header";
-        Imprimir: Boolean;
-        ConfCont: Record "General Ledger Setup";
-        Pesos: Decimal;
-        PesosCaptionLbl: Label 'Pesos';
+        RepreVtasComp: Record "Salesperson/Purchaser";
+        InfoEmpresa: Record "Company Information";
+        Clie: Record "Customer";
+        LinImporIVA: Record "VAT Amount Line" temporary;
+        ConfRegistroIVA: Record "VAT Posting Setup";
+        ContarFactVtaImpresa: Codeunit "Sales Inv.-Printed";
+        FormatDire: Codeunit "Format Address";
+        DirClie: array[8] of Text[50];
+        EnvADir: array[8] of Text[50];
+        DirEmpresa: array[8] of Text[50];
+        TextNoPedido: Text[30];
+        DescriVendedor: Text[30];
+        TextoCIF: Text[30];
+        DescriRefer: Text[30];
+        TotalTexto: Text[50];
+        TextoTotIVAIncl: Text[50];
+        MasLins: Boolean;
+        NoCopias: Integer;
+        NoBucles: Integer;
+        TextoCopia: Text[30];
+        MostrarDireEnvio: Boolean;
+        rgConfVenta: Record "Sales & Receivables Setup";
+        txOferta1: Text[101];
+        txOferta2: Text[50];
+        aFechaVto: array[3] of Date;
+        aImpVto: array[3] of Decimal;
+        rgContCli: Record "Cust. Ledger Entry";
+        rgBcoCli: Record "Customer Bank Account";
+        numa: Integer;
+        numIVA: Integer;
+        LinImporIVA1: Record "VAT Amount Line" temporary;
+        LinImporIVA2: Record "VAT Amount Line" temporary;
+        LinImporIVA3: Record "VAT Amount Line" temporary;
+        rgCliente: Record "Customer";
+        boOK: Boolean;
+        txDesc: Text[153];
+        boUltPag: Boolean;
+        iNumero: Integer;
+        iBucle: Integer;
+        iNumPagFac: Integer;
+        boSeNumPag: Boolean;
+        "txtEmb-PP": Text[30];
+        CopiaInterna: Boolean;
+        txtPortes: Text[30];
+        deImporte: Decimal;
+        Duplicado: Text[10];
+        txPreciosIVAinc: Text[30];
+        boAgruparLin: Boolean;
+        eurotot: Decimal;
+        ImportePTS: Decimal;
+        CodDivisa: Code[20];
+        CodDivisa2: Code[10];
+        textCCC: Text[30];
+        aaa: Text[30];
+        aPagos: Text[204];
+        RefProvSuNtraFra: Text[200];
+        txtBIC: Text[9];
+        ImprimirLogos: Boolean;
+        vIMPBRUTO: Decimal;
+        vDTOPP: Decimal;
+        vDTOFAC: Decimal;
+        vBASEIMP: array[3] of Decimal;
+        vPERCIVA: array[3] of Decimal;
+        vIMPIVA: array[3] of Decimal;
+        vPERRE: array[3] of Decimal;
+        VIMPRE: array[3] of Decimal;
+        vTOTAL: Decimal;
+        txtCuenta: Text[50];
+        rDirFactura: Record "Customer Pmt. Address";
+        BoolShowNSerie: Boolean;
+        TrackingMng: Codeunit "Item Tracking Management";
+        NSerie: Text[1024];
+        tmpILE: Record "Item Ledger Entry" temporary;
+        BoolShowNSerieAux: Boolean;
+        Numero: Label 'BSAB ESBB';
+        CuentaTrans: Boolean;
+        CustAmount: Decimal;
+        InvDiscAmount: Decimal;
+        PmtDiscAmount: Decimal;
+        currency: Record "Currency";
+        txtEmbPP: Text[30];
+        txtEmbPPAux: Boolean;
+        shiplines: Record "Sales Invoice Line";
 
     procedure InitLogInteraction();
     begin
@@ -1616,7 +1778,7 @@ report 99070 "Formato Factura 01"
     procedure GenerateBufferFromValueEntry(SalesInvoiceLine2: Record "Sales Invoice Line");
     var
         ValueEntry: Record "Value Entry";
-        ItemLedgerEntry: Record "Item Ledger Entry";
+        ItemLedgerEntry: Record "Item LEdger Entry";
         TotalQuantity: Decimal;
         Quantity: Decimal;
     begin
@@ -1727,17 +1889,15 @@ report 99070 "Formato Factura 01"
             EXIT;
         END;
 
-        WITH SalesShipmentBuffer DO BEGIN
-            "Document No." := SalesInvoiceLine."Document No.";
-            "Line No." := SalesInvoiceLine."Line No.";
-            "Entry No." := NextEntryNo;
-            Type := SalesInvoiceLine.Type;
-            "No." := SalesInvoiceLine."No.";
-            Quantity := QtyOnShipment;
-            "Posting Date" := PostingDate;
-            INSERT;
-            NextEntryNo := NextEntryNo + 1
-        END;
+        SalesShipmentBuffer."Document No." := SalesInvoiceLine."Document No.";
+        SalesShipmentBuffer."Line No." := SalesInvoiceLine."Line No.";
+        SalesShipmentBuffer."Entry No." := NextEntryNo;
+        SalesShipmentBuffer.Type := SalesInvoiceLine.Type;
+        SalesShipmentBuffer."No." := SalesInvoiceLine."No.";
+        SalesShipmentBuffer.Quantity := QtyOnShipment;
+        SalesShipmentBuffer."Posting Date" := PostingDate;
+        SalesShipmentBuffer.INSERT;
+        NextEntryNo := NextEntryNo + 1
     end;
 
     local procedure DocumentCaption(): Text[250];
@@ -1756,13 +1916,31 @@ report 99070 "Formato Factura 01"
         CustLedgEntry.SETRANGE("Document No.", "Sales Invoice Header"."No.");
         CustLedgEntry.SETRANGE("Customer No.", "Sales Invoice Header"."Bill-to Customer No.");
         CustLedgEntry.SETRANGE("Posting Date", "Sales Invoice Header"."Posting Date");
-        IF CustLedgEntry.FINDfirst THEN
+        IF CustLedgEntry.FIND('-') THEN
             IF CustLedgEntry."Document Situation" = CustLedgEntry."Document Situation"::" " THEN
                 EXIT(FALSE)
             ELSE
                 EXIT(TRUE)
         ELSE
             EXIT(FALSE);
+    END;
+
+    local procedure ShowCashAccountingCriteria();
+    var
+        VATPostingSetup: Record "VAT Posting Setup";
+        SalesInvoiceLine2: Record "Sales Invoice Line";
+    begin
+        GLSetup.GET;
+        IF NOT GLSetup."Unrealized VAT" THEN
+            EXIT;
+        CACCaptionLbl := '';
+        SalesInvoiceLine2.SETRANGE("Document No.", "Sales Invoice Header"."No.");
+        IF SalesInvoiceLine2.FINDSET THEN
+            REPEAT
+                IF VATPostingSetup.GET("Sales Invoice Header"."VAT Bus. Posting Group", SalesInvoiceLine2."VAT Prod. Posting Group") THEN
+                    IF VATPostingSetup."Unrealized VAT Type" <> VATPostingSetup."Unrealized VAT Type"::" " THEN
+                        CACCaptionLbl := CACTxt;
+            UNTIL (SalesInvoiceLine2.NEXT = 0) OR (CACCaptionLbl <> '');
     end;
 
     procedure InitializeRequest(NewNoOfCopies: Integer; NewShowInternalInfo: Boolean; NewLogInteraction: Boolean; DisplayAsmInfo: Boolean);
@@ -1779,7 +1957,7 @@ report 99070 "Formato Factura 01"
         ItemLedgerEntry: Record "Item Ledger Entry";
         PostedAsmHeader: Record "Posted Assembly Header";
         PostedAsmLine: Record "Posted Assembly Line";
-        SalesShipmentLine: Record "Posted Assembly Line";
+        SalesShipmentLine: Record "Sales Shipment Line";
     begin
         TempPostedAsmLine.DELETEALL;
         IF "Sales Invoice Line".Type <> "Sales Invoice Line".Type::Item THEN
@@ -1790,19 +1968,17 @@ report 99070 "Formato Factura 01"
         ValueEntry.SETRANGE("Document Line No.", "Sales Invoice Line"."Line No.");
         IF NOT ValueEntry.FINDSET THEN
             EXIT;
-
         REPEAT
             IF ItemLedgerEntry.GET(ValueEntry."Item Ledger Entry No.") THEN BEGIN
                 IF ItemLedgerEntry."Document Type" = ItemLedgerEntry."Document Type"::"Sales Shipment" THEN BEGIN
                     SalesShipmentLine.GET(ItemLedgerEntry."Document No.", ItemLedgerEntry."Document Line No.");
-                    // tfm@20220418 No exite la función AsmToShipmentExists
-                    //IF SalesShipmentLine.AsmToShipmentExists(PostedAsmHeader) THEN BEGIN
-                    //  PostedAsmLine.SETRANGE("Document No.",PostedAsmHeader."No.");
-                    IF PostedAsmLine.FINDSET THEN
-                        REPEAT
-                            TreatAsmLineBuffer(PostedAsmLine);
-                        UNTIL PostedAsmLine.NEXT = 0;
-                    // end;
+                    IF SalesShipmentLine.AsmToShipmentExists(PostedAsmHeader) THEN BEGIN
+                        PostedAsmLine.SETRANGE("Document No.", PostedAsmHeader."No.");
+                        IF PostedAsmLine.FINDSET THEN
+                            REPEAT
+                                TreatAsmLineBuffer(PostedAsmLine);
+                            UNTIL PostedAsmLine.NEXT = 0;
+                    END;
                 END;
             END;
         UNTIL ValueEntry.NEXT = 0;
@@ -1838,6 +2014,193 @@ report 99070 "Formato Factura 01"
     procedure BlanksForIndent(): Text[10];
     begin
         EXIT(PADSTR('', 2, ' '));
+    end;
+
+    procedure funTraerDomicilioCobro() txtCuenta: Text[50];
+    var
+        recEmpresa: Record "Company Information";
+        recFormaPago: Record "Payment Method";
+    begin
+        ///////////////////////////////////////// FV008
+        txtCuenta := '';
+        IF recFormaPago.GET("Sales Invoice Header"."Payment Method Code") THEN BEGIN
+            IF (recFormaPago."Create Bills") AND (recFormaPago."Bill Type" = recFormaPago."Bill Type"::Transfer) THEN BEGIN
+                recEmpresa.GET;
+                txtCuenta := recEmpresa."CCC Bank No." + '.' + recEmpresa."CCC Bank Branch No." + '.' + recEmpresa."CCC Control Digits" + '.';
+                txtCuenta := txtCuenta + recEmpresa."CCC Bank Account No.";
+                txtCuenta := 'IBAN ES91 0081 0114 4200 0103 3009';
+            END;
+        END;
+        EXIT(txtCuenta);
+        /////////////////////////////////////////
+    end;
+
+    procedure GetImporteBruto(sheader: Record "Sales Invoice Header") resultado: Decimal;
+    var
+        sline: Record "Sales Invoice Line";
+    begin
+        resultado := 0;
+        CustAmount := 0;
+        InvDiscAmount := 0;
+        PmtDiscAmount := 0;
+
+        sline.RESET;
+        //CVP ini 2017-01-04
+        //Canviem la manera de calcular l'import brut ja que no surt del tot correcte per cèntims.
+        //sline.SETRANGE(sline."Document No.",sheader."No.");
+        //IF sline.FINDSET THEN REPEAT
+        //  resultado+=ROUND(sline."Unit Price"*sline.Quantity,0.01,'=');
+        //UNTIL sline.NEXT = 0;
+        IF sheader."Currency Code" = '' THEN
+            currency.InitRoundingPrecision
+        ELSE
+            currency.GET(sheader."Currency Code");
+        sline.SETRANGE(sline."Document No.", sheader."No.");
+        IF sline.FIND('-') THEN
+            REPEAT
+                CustAmount := CustAmount + sline.Amount;
+                IF sheader."Prices Including VAT" THEN BEGIN
+                    InvDiscAmount := InvDiscAmount + sline."Inv. Discount Amount" /
+                      (1 + (sline."VAT %" + sline."EC %") / 100);
+                    PmtDiscAmount := PmtDiscAmount /
+                      (1 + (sline."VAT %" + sline."EC %") / 100)
+                END ELSE BEGIN
+                    InvDiscAmount := InvDiscAmount + sline."Inv. Discount Amount";
+                END;
+            UNTIL sline.NEXT = 0;
+        InvDiscAmount := ROUND(InvDiscAmount, currency."Amount Rounding Precision");
+
+        resultado := CustAmount + InvDiscAmount + PmtDiscAmount;
+        //CVP fi
+    end;
+
+    procedure GetImporteDtoPP(sheader: Record "Sales Invoice Header") resultado: Decimal;
+    var
+        sline: Record "Sales Invoice Line";
+    begin
+        resultado := 0;
+        sline.RESET;
+        sline.SETRANGE(sline."Document No.", sheader."No.");
+        IF sline.FINDSET THEN
+            REPEAT
+            // resultado+=sline."Pmt. Disc. Given Amount";
+            UNTIL sline.NEXT = 0;
+    end;
+
+    procedure GetImporteDtoFAC(sheader: Record "Sales Invoice Header") resultado: Decimal;
+    var
+        sline: Record "Sales Invoice Line";
+    begin
+        resultado := 0;
+        sline.RESET;
+        sline.SETRANGE(sline."Document No.", sheader."No.");
+        IF sline.FINDSET THEN
+            REPEAT
+                resultado += sline."Inv. Discount Amount";
+            UNTIL sline.NEXT = 0;
+    end;
+
+    procedure GetImporteTotal(sheader: Record "Sales Invoice Header") resultado: Decimal;
+    var
+        sline: Record "Sales Invoice Line";
+    begin
+        resultado := 0;
+        sline.RESET;
+        sline.SETRANGE(sline."Document No.", sheader."No.");
+        IF sline.FINDSET THEN
+            REPEAT
+                resultado += sline."Amount Including VAT";
+            UNTIL sline.NEXT = 0;
+    end;
+
+    procedure AsignarVariablesVAT(sheader: Record "Sales Invoice Header"): Boolean;
+    var
+        sline: Record "Sales Invoice Line";
+        totalVATlines: Integer;
+    begin
+        VATAmountLine.DELETEALL;
+        SalesShipmentBuffer.RESET;
+        SalesShipmentBuffer.DELETEALL;
+        FirstValueEntryNo := 0;
+
+        //CVP 2016-12-12 ini
+        //inicialitzem les variables per tal de no arrossegar dades
+        i := 1;
+        REPEAT
+            vBASEIMP[i] := 0;
+            vPERCIVA[i] := 0;
+            vIMPIVA[i] := 0;
+            vPERRE[i] := 0;
+            VIMPRE[i] := 0;
+            i += 1;
+        UNTIL i > 3;
+        //CVP fi
+
+        sline.RESET;
+        sline.SETRANGE(sline."Document No.", sheader."No.");
+        IF sline.FINDSET THEN
+            REPEAT
+            BEGIN
+                PostedShipmentDate := 0D;
+                IF sline.Quantity <> 0 THEN
+                    PostedShipmentDate := FindPostedShipmentDate;
+
+                IF (sline.Type = sline.Type::"G/L Account") AND (NOT ShowInternalInfo) THEN
+                    sline."No." := '';
+
+                IF VATPostingSetup.GET(sline."VAT Bus. Posting Group", sline."VAT Prod. Posting Group") THEN BEGIN
+                    VATAmountLine.INIT;
+                    VATAmountLine."VAT Identifier" := sline."VAT Identifier";
+                    VATAmountLine."VAT Calculation Type" := sline."VAT Calculation Type";
+                    VATAmountLine."Tax Group Code" := sline."Tax Group Code";
+                    VATAmountLine."VAT %" := VATPostingSetup."VAT %";
+                    VATAmountLine."EC %" := VATPostingSetup."EC %";
+                    // VATAmountLine."VAT+EC Base" := Amount;
+                    // VATAmountLine."Amount Including VAT+EC" := "Amount Including VAT";
+                    VATAmountLine."Line Amount" := sline."Line Amount";
+                    // VATAmountLine."Pmt. Disc. Given Amount" := "Pmt. Disc. Given Amount";
+                    IF sline."Allow Invoice Disc." THEN
+                        VATAmountLine."Inv. Disc. Base Amount" := sline."Line Amount";
+                    VATAmountLine."Invoice Discount Amount" := sline."Inv. Discount Amount";
+                    VATAmountLine.SetCurrencyCode(sheader."Currency Code");
+                    VATAmountLine."VAT Difference" := sline."VAT Difference";
+                    VATAmountLine."EC Difference" := sline."EC Difference";
+                    IF sheader."Prices Including VAT" THEN
+                        VATAmountLine."Prices Including VAT" := TRUE;
+                    VATAmountLine."VAT Clause Code" := sline."VAT Clause Code";
+                    VATAmountLine.InsertLine;
+                END;
+            END;
+            UNTIL sline.NEXT = 0;
+
+        //Asignar Variables Dim(3)
+        /*NameDataTypeSubtypeLength
+        vBASEIMPDecimal
+        vPERCIVADecimal
+        vIMPIVADecimal
+        vPERREDecimal
+        VIMPREInteger */
+
+        totalVATlines := VATAmountLine.COUNT;
+
+        //IF totalVATlines = 0 THEN CurrReport.QUIT;
+
+        i := 1;
+        IF VATAmountLine.FINDFIRST THEN
+            REPEAT
+                IF i <= 3 THEN BEGIN
+                    vBASEIMP[i] := VATAmountLine."VAT Base";
+                    vPERCIVA[i] := VATAmountLine."VAT %";
+                    vIMPIVA[i] := VATAmountLine."VAT Amount";
+                    vPERRE[i] := VATAmountLine."EC %";
+                    VIMPRE[i] := VATAmountLine."EC Amount";
+
+
+
+                END;
+                i += 1;
+            UNTIL VATAmountLine.NEXT = 0;
+
     end;
 }
 
